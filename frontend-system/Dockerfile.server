@@ -1,0 +1,13 @@
+FROM python:3
+
+COPY frontend-server frontend-server
+COPY frontend/protos frontend/protos
+
+WORKDIR frontend-server
+RUN pip install -r requirements.txt
+RUN chmod +x ./gen.sh
+RUN ./gen.sh
+
+EXPOSE 5000 
+
+ENTRYPOINT ["python3", "./app.py", "host.docker.internal:9095"]

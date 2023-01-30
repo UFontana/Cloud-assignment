@@ -1,0 +1,100 @@
+.User {
+    text-align: center;
+    max-width: 800px;
+	margin: 0 auto !important; 
+	float: none !important; 
+    flex-grow: 2;
+}
+.User > h1 {
+    margin-top: 20px;
+}
+.UserButtons {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.UserButtons > button {
+    flex-grow: 2;
+    margin: 10px;
+}
+.CreatePost {
+    margin-top: 20px;
+    background-color: #EAEAEA;
+    padding: 10px;
+}
+.Posts {
+    margin-top: 20px;
+    background-color: #EAEAEA;
+    padding: 10px;
+}
+.Post {
+    border-radius: 0.25rem;
+    background-color: #C4C4C4;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    text-align: left;
+    justify-content: space-between;
+}
+.Post > p {
+    margin-bottom: 0;
+}
+.floatContainer {
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+}
+.deleteBtn {
+    padding: 14px
+}
+
+.idText {
+    font-size: 0.5rem;
+    opacity: 50%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.UserCards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.UserCard {
+    margin: 10px;
+    max-width: 15rem;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.UserCardText {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    width: 100%;
+    padding: 10px;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+.UserCardTextTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}

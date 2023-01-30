@@ -1,0 +1,21 @@
+services:
+  frontend-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - "5005:5000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+
+
+networks:
+  default:
+    name: clouds-project-network

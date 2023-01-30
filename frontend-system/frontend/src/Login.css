@@ -1,0 +1,35 @@
+.User {
+	margin: 0 auto !important;
+    height: 100vh
+}
+
+.EnterUsername {
+    background-color: #EAEAEA;
+    padding: 10px;
+}
+
+.homepage {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CS300 {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center
+}
+
+.CS300 > a {
+    text-decoration: none;
+    text-align: center
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

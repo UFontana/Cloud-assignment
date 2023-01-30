@@ -1,0 +1,6 @@
+Flask==2.0.2
+grpcio==1.43.0
+grpcio-tools==1.43.0
+protobuf==3.19.1
+flask_cors
+sortedcontainers
