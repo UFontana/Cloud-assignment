@@ -1,0 +1,110 @@
+FROM ubuntu:focal
+
+
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update &&\
+  yes | unminimize
+
+# install GCC-related packages
+RUN apt-get update \
+  && apt-get install -y build-essential \
+      binutils-doc\
+      cpp-doc\
+      gcc-doc\
+      gcc \
+      g++ \
+      g++-multilib\
+      gdb \
+      gdb-doc\
+      glibc-doc\
+      libblas-dev\
+      liblapack-dev\
+      liblapack-doc\
+      libstdc++-10-doc\
+      make \
+      ninja-build \
+      cmake \
+      autoconf \
+      automake \
+      libtool \
+      valgrind \
+      locales-all \
+      dos2unix \
+      rsync \
+      tar \
+      python \
+      python-dev \
+  && apt-get clean
+ 
+# install clang-related packages
+RUN apt-get -y install\
+ clang\
+ clang-10-doc\
+ lldb\
+ clang-format
+
+# install programs used for system exploration
+RUN apt-get -y install\
+ blktrace\
+ linux-tools-generic\
+ strace\
+ tcpdump
+
+
+# install interactive programs (emacs, vim, nano, man, sudo, etc.)
+RUN apt-get -y install\
+ bc\
+ curl\
+ dc\
+ git\
+ git-doc\
+ man\
+ micro\
+ nano\
+ psmisc\
+ sudo\
+ wget
+
+# set up libraries
+RUN apt-get -y install\
+  libreadline-dev\
+  locales\
+  wamerican\
+  libssl-dev
+
+RUN apt-get -y install\
+ dnsutils\
+ inetutils-ping\
+ iproute2\
+ net-tools\
+ netcat\
+ telnet\
+ time\
+ traceroute
+
+# install project related libraries
+RUN apt-get update \
+  && apt-get install -y libgrpc++-dev\
+ protobuf-compiler\
+ libprotobuf-dev\
+ protobuf-compiler-grpc\
+ pkg-config
+
+RUN rm -r /var/lib/apt/lists/*
+
+RUN useradd -m -s /bin/bash clouds-user && \
+  echo "clouds-user ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/clouds-init
+
+# create binary reporting version of dockerfile
+RUN (echo '#\!/bin/sh'; echo 'echo 1') > /usr/bin/clouds-docker-version; chmod ugo+rx,u+w,go-w /usr/bin/clouds-docker-version
+
+# git build arguments
+ARG USER=clouds\ User
+ARG EMAIL=nobody@example.com
+
+# configure your environment
+USER clouds-user
+RUN rm -f ~/.bash_logout
+
+WORKDIR /home/clouds-user
+CMD ["/bin/bash", "-l"]
